@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, NavLink } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import MoviesPage from "./pages/MoviesPage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
-import MovieCastPage from "./pages/MovieCastPage";
-import MovieReviewsPage from "./pages/MovieReviewsPage";
+import MovieReviews from "./components/MovieReviews/MovieReviews";
+import MovieCast from "./components/MovieCast/MovieCast";
+import "./App.css";
 
 //https://developer.themoviedb.org/docs/getting-started
 //API KEY: 6862d37066485f90139e04003f8d16a0
@@ -14,17 +15,29 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div className="App">
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/movies">Movies</NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId/" element={<MovieDetailsPage />}>
-          <Route path="cast" element={<MovieCastPage />} />
-          <Route path="reviews" element={<MovieReviewsPage />} />
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
         </Route>
         <Route path="*" element={<>Oops!</>} />
       </Routes>
-    </>
+    </div>
   );
 }
 

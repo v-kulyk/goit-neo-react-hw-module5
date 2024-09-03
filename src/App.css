@@ -1,0 +1,22 @@
+.App {
+  padding: 0 20px;
+}
+header {
+  padding: 20px 0;
+}
+ul {
+  padding-left: 20px;
+}
+nav > ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  gap: 15px;
+  list-style: none;
+}
+nav > ul a.active {
+  text-decoration: underline;
+  font-weight: bold;
+  color: red;
+}
