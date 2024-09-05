@@ -6,13 +6,13 @@ import {
   useSearchParams,
   Link,
 } from "react-router-dom";
+import MovieList from "../components/MovieList/MovieList";
 
 export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [movies, setMovies] = useState(null);
-  const location = useLocation();
   const search = searchParams.get("search");
 
   useEffect(() => {
@@ -49,19 +49,7 @@ export default function MoviesPage() {
   } else if (search && (!movies || !movies.length)) {
     content = <div>No movies found</div>;
   } else if (search) {
-    content = (
-      <ul>
-        {movies.map((movie) => {
-          return (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-                {movie.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    );
+    content = <MovieList movies={movies} />;
   }
 
   return (

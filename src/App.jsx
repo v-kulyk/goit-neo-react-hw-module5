@@ -1,6 +1,7 @@
 import { Suspense, lazy, useState } from "react";
 import { Route, Routes, NavLink } from "react-router-dom";
 import "./App.css";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,16 +16,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/movies">Movies</NavLink>
-            </li>
-          </ul>
-        </nav>
+        <Navigation />
       </header>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
