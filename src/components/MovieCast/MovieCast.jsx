@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMovieCast } from "../../api/movies";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function MovieCast() {
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,7 @@ export default function MovieCast() {
     setIsError(false);
     setLoading(true);
     loadData();
-  }, []);
+  }, [movieId]);
 
   if (loading) {
     return <div>Loading...</div>;

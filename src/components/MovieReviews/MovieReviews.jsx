@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMovieReviews } from "../../api/movies";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function MovieReviews() {
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,7 @@ export default function MovieReviews() {
     setIsError(false);
     setLoading(true);
     loadData();
-  }, []);
+  }, [movieId]);
 
   if (loading) {
     return <div>Loading...</div>;
